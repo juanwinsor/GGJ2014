@@ -5,7 +5,7 @@ using XInputDotNetPure;
 
 public class PlayerController : MonoBehaviour {
 
-	public int playerNumber = 0;
+	public int playerNumber = -1;
 	public Movement movementScript;
 	//PlayerIndex controllerNumber;
 
