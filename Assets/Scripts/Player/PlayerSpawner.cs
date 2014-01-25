@@ -12,7 +12,7 @@ public class PlayerSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		SpawnPlayers ();
 
 	}
 	
@@ -21,7 +21,7 @@ public class PlayerSpawner : MonoBehaviour {
 	
 	}
 
-	void SpawnPlayers(int playerNumber)
+	void SpawnPlayers()
 	{
 		countPlayers();
 
