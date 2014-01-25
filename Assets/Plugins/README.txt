@@ -1,1 +1,0 @@
-XInputInterface.dll needs to be placed into the Unity Editor folder (ie. c:\program files\Unity\Editor)
