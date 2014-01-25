@@ -25,9 +25,9 @@ public class AIController : MonoBehaviour {
 			theDir = Random.Range(0,4);
 			moveTimer = 0;
 
-			movementScript.MoveDir (theDir);
 		}		
 
+		movementScript.MoveDir (theDir);
 	}
 
 	void calcTime()

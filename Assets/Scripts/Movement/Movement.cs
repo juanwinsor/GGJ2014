@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Movement : MonoBehaviour {
 
+	float speed = 3.0f;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -10,7 +12,7 @@ public class Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		//MoveDir (1);
 	}
 
 	public void MoveDir(int dir)
@@ -36,6 +38,6 @@ public class Movement : MonoBehaviour {
 			
 		}
 		
-		this.gameObject.rigidbody2D.AddForce(direction * 30.0f);
+		gameObject.rigidbody2D.velocity = direction * speed;
 	}
 }
