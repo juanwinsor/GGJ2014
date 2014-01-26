@@ -7,6 +7,10 @@ public class GameSessionController : MonoBehaviour {
 	private bool rampageStarted = false;
 
 
+	public int NumberOfPlayers = 0;
+	public int NumberOfBeasts = 0;
+
+
 	public NPCSpawner npcSpawner;
 	public PlayerSpawner playerSpawner;
 
@@ -60,6 +64,21 @@ public class GameSessionController : MonoBehaviour {
 			GameSessionManager.Instance.RampageModeStart();
 			rampageStarted = true;
 		}
+
+		if (NumberOfPlayers == 0) 
+		{
+			//beast wins
+			Debug.Log("BEAST WINS");
+			Application.LoadLevel("beastWin");
+		}
+
+		if (NumberOfBeasts == 0) 
+		{
+			//player wins
+			Debug.Log("HUMANS WIN");
+			Application.LoadLevel("humanWin");
+		}
+
 	}
 	
 	public void SpawnBlood(Vector3 position)

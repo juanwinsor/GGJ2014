@@ -71,6 +71,7 @@ public class PlayerSpawner : MonoBehaviour {
 
 					//playerControllerScript.weapon.GetComponent<Weapon_Beast>().gameSession = gameSession;
 					playerControllerScript.gameObject.GetComponent<Die>().gameSession = gameSession;
+					gameSession.NumberOfBeasts++;
 
 				}
 				else
@@ -90,6 +91,8 @@ public class PlayerSpawner : MonoBehaviour {
 
 					//playerControllerScript.weapon.GetComponent<Weapon_Handgun>().gameSession = gameSession;
 					playerControllerScript.gameObject.GetComponent<Die>().gameSession = gameSession;
+
+					gameSession.NumberOfPlayers++;
 				}
 			}
 		}

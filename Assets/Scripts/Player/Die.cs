@@ -20,6 +20,14 @@ public class Die : MonoBehaviour {
 		if (gameSession != null) 
 		{
 			gameSession.SpawnBlood (this.transform.position);
+			if(this.tag == "Human")
+			{
+				gameSession.NumberOfPlayers--;
+			}
+			if(this.tag == "Beast")
+			{
+				gameSession.NumberOfBeasts--;
+			}
 			Destroy (this.gameObject);
 		}
 	}

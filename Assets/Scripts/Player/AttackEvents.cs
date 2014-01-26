@@ -22,6 +22,16 @@ public class AttackEvents : MonoBehaviour {
 	{
 		Debug.Log ("attack");
 		damageDealer.SetActive (true);
+
+		if (this.tag == "Human") 
+		{
+			GameSessionManager.Instance.HumanAttack();
+		}
+		if (this.tag == "Beast") 
+		{
+			GameSessionManager.Instance.BeastAttack();
+		}
+			
 	}
 
 	void endAttack()
