@@ -6,6 +6,8 @@ public class AIController : MonoBehaviour {
 	int theDir = 0;
 	float moveTimer = 0;
 	float timeToNextMove = 0;
+	Vector3 lastPos = Vector3.zero;
+	int lastDir = 0;
 
 	public Movement movementScript;
 
@@ -16,6 +18,11 @@ public class AIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if(lastPos == this.gameObject.transform.position && lastDir != 0)
+		{
+			theDir = Random.Range(0,5);
+		}
 
 		calcTime();
 		
@@ -28,6 +35,9 @@ public class AIController : MonoBehaviour {
 		}		
 
 		movementScript.MoveDir (theDir);
+
+		lastPos = this.gameObject.transform.position;
+		lastDir = theDir;
 	}
 
 	void calcTime()
