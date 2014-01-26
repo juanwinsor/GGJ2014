@@ -46,15 +46,18 @@ public class GameSessionManager {
 
 	public void BeastAttack()
 	{
+		gameSessionController.audio.PlayOneShot(audioController.sfxScratch);
+	}
+
+	public void BeastAttackMode()
+	{
 		gameSessionController.audio.volume = 0.3f;
 		gameSessionController.audio.loop = true;
 		gameSessionController.audio.clip = audioController.musicTerror;
 		gameSessionController.audio.Play();
-
-		gameSessionController.audio.PlayOneShot(audioController.sfxScratch);
 	}
 
-	public void BeastAttackEnd()
+	public void BeastAttackModeEnd()
 	{
 
 	}
