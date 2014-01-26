@@ -24,6 +24,7 @@ public class Die : MonoBehaviour {
 			if(this.tag == "Human")
 			{
 				GameObject smile = Instantiate(smilePrefab) as GameObject;
+				smile.gameObject.transform.position = this.gameObject.transform.position;
 				gameSession.NumberOfPlayers--;
 			}
 			if(this.tag == "Beast")

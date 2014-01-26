@@ -3,7 +3,7 @@ using System.Collections;
 
 public class AmmoPickup : MonoBehaviour {
 		
-	public AmmoSpawner ammoSpawnerScript;
+	//public AmmoSpawner ammoSpawnerScript;
 
 	float minSize = 0.1f;
 	float maxSize = 0.2f;
@@ -49,7 +49,7 @@ public class AmmoPickup : MonoBehaviour {
 			PlayerController pcs = collider.gameObject.GetComponent<PlayerController>();
 			pcs.AmmoCount = 1;
 			//destroy this game object.
-			ammoSpawnerScript.ammoOnScreen--;
+			//ammoSpawnerScript.ammoOnScreen--;
 			Destroy(this.gameObject);
 		}
 	}

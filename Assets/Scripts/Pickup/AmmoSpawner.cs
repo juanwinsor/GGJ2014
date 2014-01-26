@@ -13,7 +13,7 @@ public class AmmoSpawner : MonoBehaviour {
 	float yRangeMin = 0;
 	float yRangeMax = 0;
 
-	Timer ammoTimer = new Timer(10);
+	Timer ammoTimer = new Timer(20);
 
 	// Use this for initialization
 	void Start () {
