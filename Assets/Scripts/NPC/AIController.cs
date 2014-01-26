@@ -22,7 +22,7 @@ public class AIController : MonoBehaviour {
 		if(timeToNextMove <= moveTimer)
 		{
 			timeToNextMove = Random.value * 3.0f;
-			theDir = Random.Range(0,4);
+			theDir = Random.Range(0,5);
 			moveTimer = 0;
 
 		}		

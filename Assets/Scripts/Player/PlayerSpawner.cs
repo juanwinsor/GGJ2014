@@ -4,8 +4,9 @@ using System.Collections;
 public class PlayerSpawner : MonoBehaviour {
 
 	public GameObject beastPrefab;
-	public GameObject humanPrefab;
+	//public GameObject humanPrefab;
 	public SpriteRenderer levelSpriteRenderer;
+	public GameObject[] humanList;
 
 
 	int playercount = 0;
@@ -40,7 +41,7 @@ public class PlayerSpawner : MonoBehaviour {
 	{
 		countPlayers();
 
-		int beastNum = Random.Range(0, 3);
+		int beastNum = Random.Range(0, playercount);
 		for (int i = 0; i < 4; i++) 
 		{
 			if(GamepadInput.Instance.state[i].IsConnected)
@@ -60,7 +61,8 @@ public class PlayerSpawner : MonoBehaviour {
 				}
 				else
 				{
-					GameObject human = Instantiate(humanPrefab) as GameObject;
+
+					GameObject human = Instantiate(humanList[Random.Range(0,4)]) as GameObject;
 					PlayerController playerControllerScript =  human.GetComponent<PlayerController>();
 					playerControllerScript.playerNumber = i;
 					human.transform.position = new Vector3(Random.Range(xRangeMin, xRangeMax),Random.Range(yRangeMin, yRangeMax),human.gameObject.transform.position.z);

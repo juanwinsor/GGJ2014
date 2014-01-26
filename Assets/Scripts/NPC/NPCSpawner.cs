@@ -5,6 +5,7 @@ public class NPCSpawner : MonoBehaviour {
 
 	public GameObject npcPrefab;
 	public SpriteRenderer levelSpriteRenderer;
+	public GameObject[] npcList;
 
 	int numOfNPC = 50;
 	float xRangeMin = 0;
@@ -31,7 +32,7 @@ public class NPCSpawner : MonoBehaviour {
 	{
 		for(int i = 0; i < numOfNPC; i++)
 		{
-			GameObject npc = Instantiate(npcPrefab) as GameObject;
+			GameObject npc = Instantiate(npcList[Random.Range(0,4)]) as GameObject;
 			npc.gameObject.transform.position = new Vector3(Random.Range(xRangeMin, xRangeMax),Random.Range(yRangeMin, yRangeMax),npc.gameObject.transform.position.z);
 		}
 	}
