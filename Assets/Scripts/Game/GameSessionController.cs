@@ -3,10 +3,18 @@ using System.Collections;
 
 public class GameSessionController : MonoBehaviour {
 
+
+	public NPCSpawner npcSpawner;
+	public PlayerSpawner playerSpawner;
+
 	public AudioController audioController;
 
 	// Use this for initialization
 	void Start () {
+
+		GameSessionManager.Instance.npcSpawner = npcSpawner;
+		GameSessionManager.Instance.playerSpawner = playerSpawner;
+
 		GameSessionManager.Instance.gameSessionController = this.gameObject;
 		GameSessionManager.Instance.audioController = audioController;
 

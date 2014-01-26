@@ -3,6 +3,9 @@ using System.Collections;
 
 public class GameSessionManager {
 
+	public NPCSpawner npcSpawner;
+	public PlayerSpawner playerSpawner;
+
 	public GameObject gameSessionController;
 	public AudioController audioController;
 
