@@ -79,28 +79,38 @@ public class PlayerController : MonoBehaviour {
 		{
 			if(GamepadInput.Instance.state[playerNumber].IsConnected)
 			{
-				if(GamepadInput.Instance.state[playerNumber].DPad.Up == ButtonState.Pressed && GamepadInput.Instance.previousState[playerNumber].DPad.Up != GamepadInput.Instance.state[playerNumber].DPad.Up)
+				if(GamepadInput.Instance.state[playerNumber].DPad.Up == ButtonState.Pressed)
 				{
 					movementScript.MoveDir(1);
+					animator.SetFloat("velocity", 1.0f);
+
 				}
-				if(GamepadInput.Instance.state[playerNumber].DPad.Down == ButtonState.Pressed && GamepadInput.Instance.previousState[playerNumber].DPad.Down != GamepadInput.Instance.state[playerNumber].DPad.Down)
+				else if(GamepadInput.Instance.state[playerNumber].DPad.Down == ButtonState.Pressed)
 				{
 					movementScript.MoveDir(2);
+					animator.SetFloat("velocity", 1.0f);
+
 				}
-				if(GamepadInput.Instance.state[playerNumber].DPad.Left == ButtonState.Pressed && GamepadInput.Instance.previousState[playerNumber].DPad.Left != GamepadInput.Instance.state[playerNumber].DPad.Left)
+				else if(GamepadInput.Instance.state[playerNumber].DPad.Left == ButtonState.Pressed)
 				{
 					movementScript.MoveDir(3);
+					animator.SetFloat("velocity", 1.0f);
+
 				}
-				if(GamepadInput.Instance.state[playerNumber].DPad.Right == ButtonState.Pressed && GamepadInput.Instance.previousState[playerNumber].DPad.Right != GamepadInput.Instance.state[playerNumber].DPad.Right)
+				else if(GamepadInput.Instance.state[playerNumber].DPad.Right == ButtonState.Pressed)
 				{
 					movementScript.MoveDir(4);
+					animator.SetFloat("velocity", 1.0f);
+
 				}
-				if(GamepadInput.Instance.state[playerNumber].DPad.Up == ButtonState.Released && GamepadInput.Instance.state[playerNumber].DPad.Down == ButtonState.Released && GamepadInput.Instance.state[playerNumber].DPad.Left == ButtonState.Released && GamepadInput.Instance.state[playerNumber].DPad.Right == ButtonState.Released)
+				else if(GamepadInput.Instance.state[playerNumber].DPad.Up == ButtonState.Released && GamepadInput.Instance.previousState[playerNumber].DPad.Down == ButtonState.Released && GamepadInput.Instance.state[playerNumber].DPad.Left == ButtonState.Released && GamepadInput.Instance.state[playerNumber].DPad.Right == ButtonState.Released)
 				{
 					movementScript.MoveDir(0);
+					animator.SetFloat("velocity", 0);
+
 				}
 
-				if (GamepadInput.Instance.state[playerNumber].Buttons.A == ButtonState.Pressed && GamepadInput.Instance.state[playerNumber].Buttons.A != GamepadInput.Instance.previousState[playerNumber].Buttons.A) 
+				if (GamepadInput.Instance.state[playerNumber].Buttons.A == ButtonState.Pressed && GamepadInput.Instance.previousState[playerNumber].Buttons.A == ButtonState.Released) 
 				{
 					animator.SetTrigger("attack");
 				}
