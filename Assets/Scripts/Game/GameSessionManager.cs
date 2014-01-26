@@ -1,64 +1,78 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameSessionManager : MonoBehaviour {
+public class GameSessionManager {
 
+	public GameObject gameSessionController;
 	public AudioController audioController;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
 
-		if(Input.GetKeyDown(KeyCode.M))
+
+	private static GameSessionManager m_Instance = null;
+	
+	public static GameSessionManager Instance
+	{
+		get
 		{
+			if(m_Instance == null)
+			{
+				m_Instance = new GameSessionManager();
+			}
 			
-			GameStart();
+			return m_Instance;
 		}
-
-		if(Input.GetKeyDown(KeyCode.A))
-		{
-
-			GameStart();
-		}
-
 	}
+
+
+
 
 	//when a game starts
-	void GameStart()
+	public void GameStart()
 	{
 		//this.audio.volume = 0.8f;
-		this.audio.loop = true;
-		this.audio.clip = audioController.musicAmbient;
-		this.audio.Play();
+		gameSessionController.audio.loop = true;
+		gameSessionController.audio.clip = audioController.musicAmbient;
+		gameSessionController.audio.Play();
 	}
 
 	//when rampage mode starts
-	void RampageModeStart()
+	public void RampageModeStart()
 	{
-		this.audio.volume = 0.35f;
-		this.audio.loop = true;
-		this.audio.clip = audioController.musicRampage;
-		this.audio.Play();
+		gameSessionController.audio.volume = 0.35f;
+		gameSessionController.audio.loop = true;
+		gameSessionController.audio.clip = audioController.musicRampage;
+		gameSessionController.audio.Play();
 	}
 
-	void BeastAttack()
+	public void BeastAttack()
 	{
-		this.audio.volume = 0.3f;
-		this.audio.loop = true;
-		this.audio.clip = audioController.musicTerror;
-		this.audio.Play();
+		gameSessionController.audio.volume = 0.3f;
+		gameSessionController.audio.loop = true;
+		gameSessionController.audio.clip = audioController.musicTerror;
+		gameSessionController.audio.Play();
+
+		gameSessionController.audio.PlayOneShot(audioController.sfxScratch);
 	}
 
-	void HumanAttack()
+	public void BeastAttackEnd()
 	{
 
+	}
 
-		this.audio.volume = 0.3f;
-		this.audio.PlayOneShot(audioController.sfxGun);
+	public void HumanAttack()
+	{
+		gameSessionController.audio.volume = 0.3f;
+		gameSessionController.audio.PlayOneShot(audioController.sfxGun);
+	}
+
+	public void BeastWins()
+	{
+
+	}
+
+	public void HumansWin()
+	{
+
 	}
 
 }
