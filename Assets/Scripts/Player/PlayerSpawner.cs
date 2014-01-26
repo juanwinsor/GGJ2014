@@ -8,6 +8,8 @@ public class PlayerSpawner : MonoBehaviour {
 	public SpriteRenderer levelSpriteRenderer;
 	public GameObject[] humanList;
 
+	public GameSessionController gameSession;
+
 
 	int playercount = 0;
 
@@ -58,6 +60,10 @@ public class PlayerSpawner : MonoBehaviour {
 						beast.transform.position = new Vector3(Random.Range(xRangeMin, xRangeMax),Random.Range(yRangeMin, yRangeMax),beast.gameObject.transform.position.z);
 					}
 					GamepadInput.Instance.setVibration(i,0.3f,0.3f);
+
+					//playerControllerScript.weapon.GetComponent<Weapon_Beast>().gameSession = gameSession;
+					playerControllerScript.gameObject.GetComponent<Die>().gameSession = gameSession;
+
 				}
 				else
 				{
@@ -66,6 +72,9 @@ public class PlayerSpawner : MonoBehaviour {
 					PlayerController playerControllerScript =  human.GetComponent<PlayerController>();
 					playerControllerScript.playerNumber = i;
 					human.transform.position = new Vector3(Random.Range(xRangeMin, xRangeMax),Random.Range(yRangeMin, yRangeMax),human.gameObject.transform.position.z);
+
+					//playerControllerScript.weapon.GetComponent<Weapon_Handgun>().gameSession = gameSession;
+					playerControllerScript.gameObject.GetComponent<Die>().gameSession = gameSession;
 				}
 			}
 		}

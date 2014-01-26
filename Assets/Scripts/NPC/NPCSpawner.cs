@@ -3,11 +3,13 @@ using System.Collections;
 
 public class NPCSpawner : MonoBehaviour {
 
+	public GameSessionController gameSession;
+
 	public GameObject npcPrefab;
 	public SpriteRenderer levelSpriteRenderer;
 	public GameObject[] npcList;
 
-	int numOfNPC = 100;
+	int numOfNPC = 50;
 	float xRangeMin = 0;
 	float xRangeMax = 0;
 	float yRangeMin = 0;
@@ -34,6 +36,8 @@ public class NPCSpawner : MonoBehaviour {
 		{
 			GameObject npc = Instantiate(npcList[Random.Range(0,4)]) as GameObject;
 			npc.gameObject.transform.position = new Vector3(Random.Range(xRangeMin, xRangeMax),Random.Range(yRangeMin, yRangeMax),npc.gameObject.transform.position.z);
+
+			npc.gameObject.GetComponent<Die>().gameSession = gameSession;
 		}
 	}
 }

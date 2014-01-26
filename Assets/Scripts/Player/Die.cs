@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Weapon_Beast : MonoBehaviour {
+public class Die : MonoBehaviour {
 
 	public GameSessionController gameSession;
 
@@ -15,8 +15,12 @@ public class Weapon_Beast : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter2D(Collider2D other) 
+	public void kill()
 	{
-		Debug.Log("take damage");
+		if (gameSession != null) 
+		{
+			gameSession.SpawnBlood (this.transform.position);
+			Destroy (this.gameObject);
+		}
 	}
 }
