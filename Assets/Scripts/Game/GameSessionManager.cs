@@ -32,7 +32,8 @@ public class GameSessionManager {
 	//when a game starts
 	public void GameStart()
 	{
-		//this.audio.volume = 0.8f;
+		gameSessionController.audio.Stop ();
+		gameSessionController.audio.volume = 0.8f;
 		gameSessionController.audio.loop = true;
 		gameSessionController.audio.clip = audioController.musicAmbient;
 		gameSessionController.audio.Play();
@@ -41,8 +42,9 @@ public class GameSessionManager {
 	//when rampage mode starts
 	public void RampageModeStart()
 	{
-		gameSessionController.audio.volume = 0.35f;
-		gameSessionController.audio.loop = true;
+		gameSessionController.audio.Stop ();
+		//gameSessionController.audio.volume = 0.35f;
+		//gameSessionController.audio.loop = true;
 		gameSessionController.audio.clip = audioController.musicRampage;
 		gameSessionController.audio.Play();
 	}
