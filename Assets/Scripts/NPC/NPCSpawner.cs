@@ -7,7 +7,7 @@ public class NPCSpawner : MonoBehaviour {
 	public SpriteRenderer levelSpriteRenderer;
 	public GameObject[] npcList;
 
-	int numOfNPC = 50;
+	int numOfNPC = 100;
 	float xRangeMin = 0;
 	float xRangeMax = 0;
 	float yRangeMin = 0;
