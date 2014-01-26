@@ -7,6 +7,7 @@ public class PlayerSpawner : MonoBehaviour {
 	//public GameObject humanPrefab;
 	public SpriteRenderer levelSpriteRenderer;
 	public GameObject[] humanList;
+	public GameObject[] beastList;
 	public GameObject[] Spawners;
 
 	public GameSessionController gameSession;
@@ -51,7 +52,7 @@ public class PlayerSpawner : MonoBehaviour {
 			{
 				if(beastNum == i)
 				{
-					GameObject beast = Instantiate(beastPrefab) as GameObject;
+					GameObject beast = Instantiate(beastList[Random.Range(0,4)]) as GameObject;
 					PlayerController playerControllerScript =  beast.GetComponent<PlayerController>();
 					playerControllerScript.playerNumber = i;
 					playerControllerScript.isBeastly = true;

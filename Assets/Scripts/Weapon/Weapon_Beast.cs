@@ -17,6 +17,18 @@ public class Weapon_Beast : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) 
 	{
-		Debug.Log("take damage");
+		if (other.gameObject != null) 
+		{
+			if(other != null)
+			{
+				Die dieScript = other.gameObject.GetComponent<Die>();
+				
+				if(dieScript != null)
+				{
+					dieScript.kill();
+				}
+				
+			}
+		}
 	}
 }
