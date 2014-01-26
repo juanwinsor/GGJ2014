@@ -4,6 +4,7 @@ using System.Collections;
 public class Die : MonoBehaviour {
 
 	public GameSessionController gameSession;
+	public GameObject smilePrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,7 @@ public class Die : MonoBehaviour {
 			gameSession.SpawnBlood (this.transform.position);
 			if(this.tag == "Human")
 			{
+				GameObject smile = Instantiate(smilePrefab) as GameObject;
 				gameSession.NumberOfPlayers--;
 			}
 			if(this.tag == "Beast")
