@@ -10,14 +10,29 @@ public class PlayerSpawner : MonoBehaviour {
 
 	int playercount = 0;
 
+	float xRangeMin = 0;
+	float xRangeMax = 0;
+	float yRangeMin = 0;
+	float yRangeMax = 0;
+
+
+
 	// Use this for initialization
 	void Start () {
+
+		xRangeMin = levelSpriteRenderer.bounds.center.x - levelSpriteRenderer.bounds.extents.x;
+		xRangeMax = levelSpriteRenderer.bounds.center.x + levelSpriteRenderer.bounds.extents.x;
+		yRangeMin = levelSpriteRenderer.bounds.center.y - levelSpriteRenderer.bounds.extents.y;
+		yRangeMax = levelSpriteRenderer.bounds.center.y + levelSpriteRenderer.bounds.extents.y;
+
 		SpawnPlayers ();
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+
 	
 	}
 
@@ -35,18 +50,20 @@ public class PlayerSpawner : MonoBehaviour {
 					GameObject beast = Instantiate(beastPrefab) as GameObject;
 					PlayerController playerControllerScript =  beast.GetComponent<PlayerController>();
 					playerControllerScript.playerNumber = i;
+					playerControllerScript.isBeastly = true;
 					bool isInGoodSpot = false;
 					//while(isInGoodSpot == false)
 					{
-						beast.transform.position = new Vector3(2,2,beast.gameObject.transform.position.z);
+						beast.transform.position = new Vector3(Random.Range(xRangeMin, xRangeMax),Random.Range(yRangeMin, yRangeMax),beast.gameObject.transform.position.z);
 					}
+					GamepadInput.Instance.setVibration(i,0.3f,0.3f);
 				}
 				else
 				{
 					GameObject human = Instantiate(humanPrefab) as GameObject;
 					PlayerController playerControllerScript =  human.GetComponent<PlayerController>();
 					playerControllerScript.playerNumber = i;
-					human.transform.position = new Vector3(2,2,human.gameObject.transform.position.z);
+					human.transform.position = new Vector3(Random.Range(xRangeMin, xRangeMax),Random.Range(yRangeMin, yRangeMax),human.gameObject.transform.position.z);
 				}
 			}
 		}

@@ -4,15 +4,21 @@ using System.Collections;
 public class NPCSpawner : MonoBehaviour {
 
 	public GameObject npcPrefab;
+	public SpriteRenderer levelSpriteRenderer;
 
 	int numOfNPC = 50;
-	float xRangeMin = 2;
-	float xRangeMax = 15.0f;
-	float yRangeMin = 2;
-	float yRangeMax = 8.0f;
+	float xRangeMin = 0;
+	float xRangeMax = 0;
+	float yRangeMin = 0;
+	float yRangeMax = 0;
 
 	// Use this for initialization
 	void Start () {
+		xRangeMin = levelSpriteRenderer.bounds.center.x - levelSpriteRenderer.bounds.extents.x;
+		xRangeMax = levelSpriteRenderer.bounds.center.x + levelSpriteRenderer.bounds.extents.x;
+		yRangeMin = levelSpriteRenderer.bounds.center.y - levelSpriteRenderer.bounds.extents.y;
+		yRangeMax = levelSpriteRenderer.bounds.center.y + levelSpriteRenderer.bounds.extents.y;
+
 		spawnNPCs();
 	}
 	

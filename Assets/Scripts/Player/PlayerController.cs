@@ -7,33 +7,34 @@ public class PlayerController : MonoBehaviour {
 
 	public int playerNumber = -1;
 	public Movement movementScript;
-	//PlayerIndex controllerNumber;
+	public Animator animator;
+	public bool isBeastly;
+
+
+	float rumbleTimer = 0.0f;
+	float rumbleLength = 1.0f;
+	bool isRumbling = true;
+	bool rumX = false;
+	bool rumY = false;
+	bool rumB = false;
 
 	// Use this for initialization
 	void Start () {
-		/*switch (playerNumber) 
-		{
-		default:
-			controllerNumber = PlayerIndex.One;
-			break;
-		case 1:
-			controllerNumber = PlayerIndex.One;
-			break;
-		case 2:
-			controllerNumber = PlayerIndex.Two;
-			break;
-		case 3:
-			controllerNumber = PlayerIndex.Three;
-			break;
-		case 4:
-			controllerNumber = PlayerIndex.Four;
-			break;
 
-		}*/
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (isRumbling == true) 
+		{
+			rumbleTimer += Time.deltaTime;
+			if (rumbleTimer > rumbleLength) 
+			{
+				GamepadInput.Instance.setVibration(playerNumber,0,0);
+				isRumbling = false;
+			}
+		}
 
 		if (playerNumber != -1) 
 		{
@@ -59,18 +60,34 @@ public class PlayerController : MonoBehaviour {
 				{
 					movementScript.MoveDir(0);
 				}
+
+				if (GamepadInput.Instance.state[playerNumber].Buttons.A == ButtonState.Pressed && GamepadInput.Instance.state[playerNumber].Buttons.A != GamepadInput.Instance.previousState[playerNumber].Buttons.A) 
+				{
+					animator.SetTrigger("attack");
+				}
+
+				if(isBeastly)
+				{
+					if(GamepadInput.Instance.state[playerNumber].Buttons.X == ButtonState.Pressed && rumX == false)
+					{
+						if(playerNumber == 0)
+						{
+							GamepadInput.Instance.setVibration(1,1.0f,1.0f);
+						}
+					}
+					if(GamepadInput.Instance.state[playerNumber].Buttons.X == ButtonState.Pressed && rumY == false)
+					{
+						
+					}
+					if(GamepadInput.Instance.state[playerNumber].Buttons.X == ButtonState.Pressed && rumB == false)
+					{
+						
+					}
+
+				}
+
 			}
 		}
-
-
-		/*
-		GamePadState checkState = GamePad.GetState(controllerNumber);
-		if (checkState.IsConnected) 
-		{
-			GamePadState state = GamePad.GetState(controllerNumber);
-
-			//if(state.Buttons.
-		}*/
 	
 	}
 }
