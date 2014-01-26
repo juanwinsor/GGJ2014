@@ -69,18 +69,38 @@ public class GameSessionController : MonoBehaviour {
 		{
 			//beast wins
 			Debug.Log("BEAST WINS");
+
+			StopControllerVibration();
+
 			Application.LoadLevel("beastWin");
+
+
+
 		}
 
 		if (NumberOfBeasts == 0) 
 		{
 			//player wins
 			Debug.Log("HUMANS WIN");
+
+			StopControllerVibration();
+
 			Application.LoadLevel("humanWin");
 		}
 
 	}
-	
+
+	public void StopControllerVibration()
+	{
+		for(int i = 0; i < 4; i++)
+		{
+			if(GamepadInput.Instance.state[i].IsConnected)
+			{
+				GamepadInput.Instance.setVibration(i, 0, 0);
+			}
+		}
+	}
+
 	public void SpawnBlood(Vector3 position)
 	{
 		int effectNumber = Random.Range (0, 5);		

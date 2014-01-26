@@ -39,6 +39,11 @@ public class GameSessionManager {
 		gameSessionController.audio.Play();
 	}
 
+	public void Reset()
+	{
+
+	}
+
 	//when rampage mode starts
 	public void RampageModeStart()
 	{
