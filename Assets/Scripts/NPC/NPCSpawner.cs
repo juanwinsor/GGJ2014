@@ -8,6 +8,7 @@ public class NPCSpawner : MonoBehaviour {
 	public GameObject npcPrefab;
 	public SpriteRenderer levelSpriteRenderer;
 	public GameObject[] npcList;
+	public GameObject[] Spawners;
 
 	int numOfNPC = 50;
 	float xRangeMin = 0;
@@ -35,6 +36,12 @@ public class NPCSpawner : MonoBehaviour {
 		for(int i = 0; i < numOfNPC; i++)
 		{
 			GameObject npc = Instantiate(npcList[Random.Range(0,4)]) as GameObject;
+			int theBoxNum = Random.Range(0,9);
+			xRangeMin = Spawners[theBoxNum].gameObject.transform.position.x - (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.x / 2);
+			xRangeMax = Spawners[theBoxNum].gameObject.transform.position.x + (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.x / 2);
+			yRangeMin = Spawners[theBoxNum].gameObject.transform.position.y - (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.y / 2);
+			yRangeMax = Spawners[theBoxNum].gameObject.transform.position.y + (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.y / 2);
+			
 			npc.gameObject.transform.position = new Vector3(Random.Range(xRangeMin, xRangeMax),Random.Range(yRangeMin, yRangeMax),npc.gameObject.transform.position.z);
 
 			npc.gameObject.GetComponent<Die>().gameSession = gameSession;

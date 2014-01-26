@@ -7,6 +7,7 @@ public class PlayerSpawner : MonoBehaviour {
 	//public GameObject humanPrefab;
 	public SpriteRenderer levelSpriteRenderer;
 	public GameObject[] humanList;
+	public GameObject[] Spawners;
 
 	public GameSessionController gameSession;
 
@@ -57,6 +58,12 @@ public class PlayerSpawner : MonoBehaviour {
 					bool isInGoodSpot = false;
 					//while(isInGoodSpot == false)
 					{
+					int theBoxNum = Random.Range(0,9);
+						xRangeMin = Spawners[theBoxNum].gameObject.transform.position.x - (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.x / 2);
+						xRangeMax = Spawners[theBoxNum].gameObject.transform.position.x + (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.x / 2);
+						yRangeMin = Spawners[theBoxNum].gameObject.transform.position.y - (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.y / 2);
+						yRangeMax = Spawners[theBoxNum].gameObject.transform.position.y + (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.y / 2);
+						
 						beast.transform.position = new Vector3(Random.Range(xRangeMin, xRangeMax),Random.Range(yRangeMin, yRangeMax),beast.gameObject.transform.position.z);
 					}
 					GamepadInput.Instance.setVibration(i,0.3f,0.3f);
@@ -71,6 +78,13 @@ public class PlayerSpawner : MonoBehaviour {
 					GameObject human = Instantiate(humanList[Random.Range(0,4)]) as GameObject;
 					PlayerController playerControllerScript =  human.GetComponent<PlayerController>();
 					playerControllerScript.playerNumber = i;
+					
+					int theBoxNum = Random.Range(0,9);
+						xRangeMin = Spawners[theBoxNum].gameObject.transform.position.x - (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.x / 2);
+						xRangeMax = Spawners[theBoxNum].gameObject.transform.position.x + (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.x / 2);
+						yRangeMin = Spawners[theBoxNum].gameObject.transform.position.y - (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.y / 2);
+						yRangeMax = Spawners[theBoxNum].gameObject.transform.position.y + (((BoxCollider2D)Spawners[theBoxNum].collider2D).size.y / 2);
+						
 					human.transform.position = new Vector3(Random.Range(xRangeMin, xRangeMax),Random.Range(yRangeMin, yRangeMax),human.gameObject.transform.position.z);
 
 					//playerControllerScript.weapon.GetComponent<Weapon_Handgun>().gameSession = gameSession;
