@@ -5,7 +5,7 @@ public class Movement : MonoBehaviour {
 
 	public Animator animator;
 
-	float speed = 3.0f;
+	float speed = 2.0f;
 
 
 	// Use this for initialization

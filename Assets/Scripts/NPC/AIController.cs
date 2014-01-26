@@ -21,7 +21,7 @@ public class AIController : MonoBehaviour {
 
 		if(lastPos == this.gameObject.transform.position && lastDir != 0)
 		{
-			theDir = Random.Range(0,5);
+			//theDir = Random.Range(0,5);
 		}
 
 		calcTime();
@@ -44,4 +44,34 @@ public class AIController : MonoBehaviour {
 	{
 		moveTimer += Time.deltaTime;
 	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+
+		if(col.collider.gameObject.layer == LayerMask.NameToLayer("World"))
+		{
+			int newDir = theDir;
+			while(newDir == theDir)
+			{
+				newDir = Random.Range(1,5);
+			}
+			theDir = newDir;
+			/*switch(theDir)
+			{
+			case 1:
+				theDir = 2;
+				break;
+			case 2:
+				theDir = 1;
+				break;
+			case 3:
+				theDir = 4;
+				break;
+			case 4:
+				theDir = 3;
+				break;
+			}*/
+		}
+	}
+
 }
