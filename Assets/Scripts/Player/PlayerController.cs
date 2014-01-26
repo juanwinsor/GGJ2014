@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour {
 	float rumbleTimer = 0.0f;
 	float rumbleLength = 1.0f;
 	bool isRumbling = true;
+	Timer rumXTimer = new Timer(1);
+	Timer rumYTimer = new Timer(1);
+	Timer rumBTimer = new Timer(1);
 	bool rumX = false;
 	bool rumY = false;
 	bool rumB = false;
@@ -33,6 +36,42 @@ public class PlayerController : MonoBehaviour {
 			{
 				GamepadInput.Instance.setVibration(playerNumber,0,0);
 				isRumbling = false;
+			}
+		}
+
+		if (rumXTimer.Done && rumX == true) 
+		{
+			if(playerNumber == 0)
+			{
+				GamepadInput.Instance.setVibration(1,0.0f,0.0f);
+			}
+			else if (playerNumber == 1 || playerNumber == 2 || playerNumber == 3)
+			{
+				GamepadInput.Instance.setVibration(0,0.0f,0.0f);
+			}
+		}
+
+		if (rumXTimer.Done && rumX == true) 
+		{
+			if(playerNumber == 0 || playerNumber == 1)
+			{
+				GamepadInput.Instance.setVibration(2,0.0f,0.0f);
+			}
+			else if (playerNumber == 2  || playerNumber == 3)
+			{
+				GamepadInput.Instance.setVibration(1,0.0f,0.0f);
+			}
+		}
+
+		if (rumXTimer.Done && rumX == true) 
+		{
+			if(playerNumber == 0 || playerNumber == 1 || playerNumber == 2)
+			{
+				GamepadInput.Instance.setVibration(3,0.0f,0.0f);
+			}
+			else if (playerNumber == 3)
+			{
+				GamepadInput.Instance.setVibration(2,0.0f,0.0f);
 			}
 		}
 
@@ -72,16 +111,46 @@ public class PlayerController : MonoBehaviour {
 					{
 						if(playerNumber == 0)
 						{
-							GamepadInput.Instance.setVibration(1,1.0f,1.0f);
+							GamepadInput.Instance.setVibration(1,50.0f,50.0f);
+							rumXTimer.Start();
+							rumX = true;
+						}
+						else if (playerNumber == 1 || playerNumber == 2 || playerNumber == 3)
+						{
+							GamepadInput.Instance.setVibration(0,50.0f,50.0f);
+							rumXTimer.Start();
+							rumX = true;
 						}
 					}
-					if(GamepadInput.Instance.state[playerNumber].Buttons.X == ButtonState.Pressed && rumY == false)
+					if(GamepadInput.Instance.state[playerNumber].Buttons.Y == ButtonState.Pressed && rumY == false)
 					{
-						
+						if(playerNumber == 0 || playerNumber == 1)
+						{
+							GamepadInput.Instance.setVibration(2,50.0f,50.0f);
+							rumYTimer.Start();
+							rumY = true;
+						}
+						else if (playerNumber == 2  || playerNumber == 3)
+						{
+							GamepadInput.Instance.setVibration(1,50.0f,50.0f);
+							rumYTimer.Start();
+							rumY = true;
+						}
 					}
-					if(GamepadInput.Instance.state[playerNumber].Buttons.X == ButtonState.Pressed && rumB == false)
+					if(GamepadInput.Instance.state[playerNumber].Buttons.B == ButtonState.Pressed && rumB == false)
 					{
-						
+						if(playerNumber == 0 || playerNumber == 1 || playerNumber == 2)
+						{
+							GamepadInput.Instance.setVibration(3,50.0f,50.0f);
+							rumBTimer.Start();
+							rumB = true;
+						}
+						else if (playerNumber == 3)
+						{
+							GamepadInput.Instance.setVibration(2,50.0f,50.0f);
+							rumBTimer.Start();
+							rumB = true;
+						}
 					}
 
 				}
