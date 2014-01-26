@@ -4,18 +4,24 @@ using System.Collections;
 public class Movement : MonoBehaviour {
 
 	public Animator animator;
+	Timer beastTimer = new Timer(90);
 
 	float speed = 2.0f;
 
 
 	// Use this for initialization
 	void Start () {
-	
+		beastTimer.Start ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (beastTimer.Done && this.gameObject.tag == "Beast") {
+			speed = 6.0f;
+				}
 		//MoveDir (1);
+
 	}
 
 	public void MoveDir(int dir)
