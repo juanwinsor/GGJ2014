@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour {
 	void Update () {
 
 		if (beastTimer.Done && this.gameObject.tag == "Beast") {
-			speed = 6.0f;
+			speed = 5.0f;
 				}
 		//MoveDir (1);
 

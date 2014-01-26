@@ -21,7 +21,7 @@ public class BeastAttackFlicker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PlayLightFlicker ();
+		//PlayLightFlicker ();
 	}
 
 	public void PlayLightFlicker()

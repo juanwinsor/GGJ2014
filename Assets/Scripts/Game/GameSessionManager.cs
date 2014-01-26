@@ -10,6 +10,8 @@ public class GameSessionManager {
 	public AudioController audioController;
 
 
+	public BeastAttackFlicker attackFlickerScript;
+
 
 	private static GameSessionManager m_Instance = null;
 	

@@ -16,6 +16,8 @@ public class GameSessionController : MonoBehaviour {
 
 	public SpriteRenderer levelRenderer;
 	public Sprite levelRampageSprite;
+
+	public BeastAttackFlicker attackFlickerScript;
 	
 	public AudioController audioController;
 	
@@ -32,7 +34,9 @@ public class GameSessionController : MonoBehaviour {
 		
 		GameSessionManager.Instance.gameSessionController = this.gameObject;
 		GameSessionManager.Instance.audioController = audioController;
-		
+
+		GameSessionManager.Instance.attackFlickerScript = attackFlickerScript;
+
 		GameSessionManager.Instance.GameStart();
 
 

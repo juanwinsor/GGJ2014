@@ -26,6 +26,9 @@ public class Die : MonoBehaviour {
 				GameObject smile = Instantiate(smilePrefab) as GameObject;
 				smile.gameObject.transform.position = this.gameObject.transform.position;
 				gameSession.NumberOfPlayers--;
+
+				GameSessionManager.Instance.attackFlickerScript.PlayLightFlicker();
+
 			}
 			if(this.tag == "Beast")
 			{
