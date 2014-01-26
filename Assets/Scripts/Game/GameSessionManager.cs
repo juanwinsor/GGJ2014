@@ -12,34 +12,53 @@ public class GameSessionManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKey(KeyCode.A))
+
+		if(Input.GetKeyDown(KeyCode.M))
 		{
-			//this.audio.clip = audioController.musicAmbient;
-			//this.audio.loop = true;
-			//this.audio.Play();
+			
+			GameStart();
 		}
+
+		if(Input.GetKeyDown(KeyCode.A))
+		{
+
+			GameStart();
+		}
+
 	}
 
 	//when a game starts
 	void GameStart()
 	{
-
+		//this.audio.volume = 0.8f;
+		this.audio.loop = true;
+		this.audio.clip = audioController.musicAmbient;
+		this.audio.Play();
 	}
 
 	//when rampage mode starts
 	void RampageModeStart()
 	{
-
+		this.audio.volume = 0.35f;
+		this.audio.loop = true;
+		this.audio.clip = audioController.musicRampage;
+		this.audio.Play();
 	}
 
 	void BeastAttack()
 	{
-
+		this.audio.volume = 0.3f;
+		this.audio.loop = true;
+		this.audio.clip = audioController.musicTerror;
+		this.audio.Play();
 	}
 
 	void HumanAttack()
 	{
 
+
+		this.audio.volume = 0.3f;
+		this.audio.PlayOneShot(audioController.sfxGun);
 	}
 
 }
